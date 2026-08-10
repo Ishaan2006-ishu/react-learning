@@ -4,13 +4,10 @@ function App(){
     <div>
       <h1>React learning</h1>
       <p>Welcome to React!</p>
-      <h1>React learning</h1>
-      <p>Welcome to React!</p>
-      <h1>React learning</h1>
-      <p>Welcome to React!</p>
-      <h1>React learning</h1>
-      <p>Welcome to React!</p>
-      <ProductCard />
+      
+      <ProductCard name="macbookpro" price={10000}  />
+<ProductCard name="victus" price={50000}  />
+<ProductCard name="dell" price={30000}  />
     </div>
     
   )

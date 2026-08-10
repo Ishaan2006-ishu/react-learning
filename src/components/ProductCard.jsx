@@ -1,15 +1,27 @@
-function ProductCard(){
+import { useState } from "react";
+
+
+const [purchased, setPurchased] = useState(false);
+function handleClick() {
+    setPurchased(true);
+}
+function ProductCard({ name, price, available }) {
     return (
-    <div>
-        <h1>laptop prices</h1>
-        <p>Mac book pro-100000</p>
-    </div>
-        
-              
-
-
-
-
-    )
+        <div>
+            <h1>{name}</h1>
+            <p>{price}</p>
+            <p>
+    {purchased ? "Purchased ✅" : "Available"}
+</p>
+        <button onClick={handleClick}>
+    Buy Now
+</button>
+            
+        </div>
+    );
 }   
+
+
+
+
 export default ProductCard;
