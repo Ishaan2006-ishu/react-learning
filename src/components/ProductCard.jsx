@@ -1,11 +1,12 @@
 import { useState } from "react";
 
 
-const [purchased, setPurchased] = useState(false);
+
+function ProductCard({ name, price}) {
+    const [purchased, setPurchased] = useState(false);
 function handleClick() {
     setPurchased(true);
 }
-function ProductCard({ name, price, available }) {
     return (
         <div>
             <h1>{name}</h1>

@@ -1,7 +1,13 @@
+import { useState } from 'react';
 import ProductCard from './components/ProductCard.jsx'
+import Counter from './components/Counter.jsx'
 function App(){
+  
   return (
     <div>
+      <Counter />
+      <Counter />
+      
       <h1>React learning</h1>
       <p>Welcome to React!</p>
       
