@@ -1,12 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProductCard from './components/ProductCard.jsx'
 import Counter from './components/Counter.jsx'
 function App(){
+  const [count,setCount]=useState(0);
+  useEffect(()=>{
+    console.log("effect");
+  },[])
   
   return (
     <div>
-      <Counter />
-      <Counter />
+      <Counter count={count} setCount={setCount} />
+      <Counter count={count} setCount={setCount} />
       
       <h1>React learning</h1>
       <p>Welcome to React!</p>
