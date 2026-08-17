@@ -4,6 +4,7 @@ import Counter from './components/Counter.jsx'
 import Timer from './components/Timer.jsx'
 function App(){
   const [count,setCount]=useState(0);
+
   // useEffect(()=>{
   //   console.log("effect");
   // },[])
@@ -13,13 +14,55 @@ function App(){
   //     console.log("cleanup: ",count);
   //   }
   // },[count])
-  const college=["gla", "iitdelhi", "mit" , "jiit", "mnit"]
+  //const college=["gla", "iitdelhi", "mit" , "jiit", "mnit"]
+ 
+  function handleChange(event){
+    const {name,value}=event.target
+    setFormData({
+      ...formData,
+      [name]:value
+    });
+  }
+  const [formData,setFormData]=useState({
+    name:"",
+    email:"",
+    password:""
+
+  })
+  function handleSubmit(event){
+    event.preventDefault();
+    console.log("form submitted")
+    console.log(formData)
+  }
   
   return (
     <div>
-      {college.map(col=>(
-        <h2>{col}</h2>
-        ))}
+      
+      <form onSubmit={handleSubmit}>
+        <input
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+       />
+      <input
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+       />
+      <input
+        name="password"
+        value={formData.password}
+        onChange={handleChange}
+       />
+       <button type="submit">
+        Submit
+       </button>
+
+      </form>
+       <h2>Hello, {formData.name}</h2>
+       <h2>Hello, {formData.email}</h2>
+       <h2>Hello, {formData.password}</h2>
+      
       
       <Counter count={count} setCount={setCount} />
       <Counter count={count} setCount={setCount} />
