@@ -4,6 +4,11 @@ import Counter from './components/Counter.jsx'
 import Timer from './components/Timer.jsx'
 function App(){
   const [count,setCount]=useState(0);
+  const [error,setError]=useState({
+    name:"",
+    email:"",
+    password:""
+  });
 
   // useEffect(()=>{
   //   console.log("effect");
@@ -15,24 +20,76 @@ function App(){
   //   }
   // },[count])
   //const college=["gla", "iitdelhi", "mit" , "jiit", "mnit"]
+   async function test() {
+    const response = await fetch("https://jsonplaceholder.typicode.com/users/1");
+
+    console.log(response);
+    
+    const data = await response.json();
+
+    console.log(data);
+}
  
-  function handleChange(event){
-    const {name,value}=event.target
-    setFormData({
-      ...formData,
-      [name]:value
-    });
-  }
+ 
   const [formData,setFormData]=useState({
     name:"",
     email:"",
     password:""
 
   })
+   function handleChange(event){
+    const {name,value}=event.target
+    
+    setError(prev => ({
+        ...prev,
+        [name]: ""
+    }));
+    
+    setFormData({
+      ...formData,
+      [name]:value
+    });
+  }
   function handleSubmit(event){
     event.preventDefault();
+    let hasError=false;
+    if(formData.name.trim()===""){
+      setError({
+        ...error,
+        name:"name is required"
+
+      });
+      hasError=true;
+      
+    }
+    if(formData.email.trim()===""){
+      setError({
+        ...error,
+        email:"email is required"
+      });
+      hasError=true;
+      
+    }
+    if(formData.password.trim()===""){
+      setError({
+        ...error,
+        password:"password is required"
+      });
+      hasError=true;
+      
+    }
+    if(hasError==true){
+      return;
+    }
+    test();
+   
+    
+    
     console.log("form submitted")
-    console.log(formData)
+
+    
+    
+   
   }
   
   return (
@@ -40,9 +97,11 @@ function App(){
       
       <form onSubmit={handleSubmit}>
         <input
+        
         name="name"
         value={formData.name}
         onChange={handleChange}
+        
        />
       <input
         name="email"
@@ -54,6 +113,9 @@ function App(){
         value={formData.password}
         onChange={handleChange}
        />
+       {error.name && <p>{error.name}</p>}
+       {error.email && <p>{error.email}</p>}
+       {error.password && <p>{error.password}</p>}
        <button type="submit">
         Submit
        </button>
