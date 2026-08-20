@@ -1,4 +1,5 @@
  import { useEffect, useState } from 'react';
+ import User from './components/User.jsx'
 // import ProductCard from './components/ProductCard.jsx'
 // import Counter from './components/Counter.jsx'
 // import Timer from './components/Timer.jsx'
@@ -142,66 +143,61 @@
 
 
 function App(){
-  const [users,setUsers]=useState([]);
-  const [loading,setLoading]=useState(false);
-  const [errors,setError]=useState("");
-  async function getUsers() {
-    // setLoading(true);
-    // setError("");
+  // const [users,setUsers]=useState([]);
+  // const [loading,setLoading]=useState(false);
+  // const [errors,setError]=useState("");
+  // async function getUsers() {
+  //   // setLoading(true);
+  //   // setError("");
 
-    // const response=await fetch("https://jsonplaceholder.typicode.com/users");
-    // if(!response.ok){
-    //   setError("failed to fetch user");
-    //   setLoading(false);
-    //   return;
-    // }
-    // const data=await response.json();
+  //   // const response=await fetch("https://jsonplaceholder.typicode.com/users");
+  //   // if(!response.ok){
+  //   //   setError("failed to fetch user");
+  //   //   setLoading(false);
+  //   //   return;
+  //   // }
+  //   // const data=await response.json();
 
-    // setUsers(data);
-    // console.log(data)
-    // setLoading(false);
-    setLoading(true);
-    setError("");
-     try {
-        const response = await fetch(
-            "https://jsonplaceholder.typicode.com/users"
-        );
+  //   // setUsers(data);
+  //   // console.log(data)
+  //   // setLoading(false);
+  //   setLoading(true);
+  //   setError("");
+  //    try {
+  //       const response = await fetch(
+  //           "https://jsonplaceholder.typicode.com/users"
+  //       );
 
-        if (!response.ok) {
-            throw new Error("Failed to fetch users");
-        }
+  //       if (!response.ok) {
+  //           throw new Error("Failed to fetch users");
+  //       }
 
-        const data = await response.json();
+  //       const data = await response.json();
 
-        setUsers(data);
+  //       setUsers(data);
 
-    } catch (error) {
-        setError(error.message);
+  //   } catch (error) {
+  //       setError(error.message);
 
-    } finally {
-        setLoading(false);
-    }
+  //   } finally {
+  //       setLoading(false);
+  //   }
+    
 
 
     
-  }
+  // }
+  // useEffect(() => {
+  //       getUsers()
+  //     },[])
 
   return(
     <div>
-      <button onClick={getUsers}> GetUser </button>
-      {users.map(user=>(
-        <div key={user.id}>
-          <h3>{user.name}</h3>
-          <p>{user.email}</p>
-          </div>
-
-      ))}
-      
-
-      <p>Loading: {loading ? "Yes" : "No"}</p>
-<p>{errors}</p>
-
+      <User userId={5}/>
     </div>
+    
+
+    
 
   )
 } 
