@@ -1,5 +1,6 @@
  import { useEffect, useState } from 'react';
  import User from './components/User.jsx'
+ import useFetch from './hooks/useFetch.jsx'
 // import ProductCard from './components/ProductCard.jsx'
 // import Counter from './components/Counter.jsx'
 // import Timer from './components/Timer.jsx'
@@ -190,10 +191,32 @@ function App(){
   // useEffect(() => {
   //       getUsers()
   //     },[])
+  //const {data:user,loading,error}=useFetch( "https://jsonplaceholder.typicode.com/users/5" )
+  const user1 = useFetch(
+    "https://jsonplaceholder.typicode.com/users/1"
+);
+
+const user2 = useFetch(
+    "https://jsonplaceholder.typicode.com/users/2"
+);
 
   return(
+    // <div>
+    //   <User userId={5}/>
+    // </div>
+
     <div>
-      <User userId={5}/>
+       {user1.loading && <p>Loading...</p>}
+
+        {user1.error && <p>{error}</p>}
+       {user2.loading && <p>Loading...</p>}
+
+        {user2.error && <p>{error}</p>}
+
+        <h2>{user1.data?.name}</h2>
+        <h2>{user2.data?.name}</h2>
+    
+
     </div>
     
 
