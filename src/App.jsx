@@ -1,227 +1,401 @@
- import { useEffect, useState } from 'react';
- import User from './components/User.jsx'
- import useFetch from './hooks/useFetch.jsx'
-// import ProductCard from './components/ProductCard.jsx'
-// import Counter from './components/Counter.jsx'
-// import Timer from './components/Timer.jsx'
-// function App(){
-//   const [count,setCount]=useState(0);
-//   const [error,setError]=useState({
-//     name:"",
-//     email:"",
-//     password:""
-//   });
+//  import { useEffect, useState } from 'react';
+//  import User from './components/User.jsx'
+//  import useFetch from './hooks/useFetch.jsx'
+// // import ProductCard from './components/ProductCard.jsx'
+// // import Counter from './components/Counter.jsx'
+// // import Timer from './components/Timer.jsx'
+// // function App(){
+// //   const [count,setCount]=useState(0);
+// //   const [error,setError]=useState({
+// //     name:"",
+// //     email:"",
+// //     password:""
+// //   });
 
-//   // useEffect(()=>{
-//   //   console.log("effect");
-//   // },[])
-//   // useEffect(()=>{
-//   //   console.log("effect: ",count);
-//   //   return ()=>{
-//   //     console.log("cleanup: ",count);
-//   //   }
-//   // },[count])
-//   //const college=["gla", "iitdelhi", "mit" , "jiit", "mnit"]
-// //    async function test() {
-// //     const response = await fetch("https://jsonplaceholder.typicode.com/users/1");
+// //   // useEffect(()=>{
+// //   //   console.log("effect");
+// //   // },[])
+// //   // useEffect(()=>{
+// //   //   console.log("effect: ",count);
+// //   //   return ()=>{
+// //   //     console.log("cleanup: ",count);
+// //   //   }
+// //   // },[count])
+// //   //const college=["gla", "iitdelhi", "mit" , "jiit", "mnit"]
+// // //    async function test() {
+// // //     const response = await fetch("https://jsonplaceholder.typicode.com/users/1");
 
-// //     console.log(response);
+// // //     console.log(response);
     
-// //     const data = await response.json();
+// // //     const data = await response.json();
 
-// //     console.log(data);
-// // }
+// // //     console.log(data);
+// // // }
  
  
-//   // const [formData,setFormData]=useState({
-//   //   name:"",
-//   //   email:"",
-//   //   password:""
+// //   // const [formData,setFormData]=useState({
+// //   //   name:"",
+// //   //   email:"",
+// //   //   password:""
 
-//   // })
-//   //  function handleChange(event){
-//   //   const {name,value}=event.target
+// //   // })
+// //   //  function handleChange(event){
+// //   //   const {name,value}=event.target
     
-//   //   setError(prev => ({
-//   //       ...prev,
-//   //       [name]: ""
-//   //   }));
+// //   //   setError(prev => ({
+// //   //       ...prev,
+// //   //       [name]: ""
+// //   //   }));
     
-//   //   setFormData({
-//   //     ...formData,
-//   //     [name]:value
-//   //   });
-//   // }
-//   // function handleSubmit(event){
-//   //   event.preventDefault();
-//   //   let hasError=false;
-//   //   if(formData.name.trim()===""){
-//   //     setError({
-//   //       ...error,
-//   //       name:"name is required"
+// //   //   setFormData({
+// //   //     ...formData,
+// //   //     [name]:value
+// //   //   });
+// //   // }
+// //   // function handleSubmit(event){
+// //   //   event.preventDefault();
+// //   //   let hasError=false;
+// //   //   if(formData.name.trim()===""){
+// //   //     setError({
+// //   //       ...error,
+// //   //       name:"name is required"
 
-//   //     });
-//   //     hasError=true;
+// //   //     });
+// //   //     hasError=true;
       
-//   //   }
-//   //   if(formData.email.trim()===""){
-//   //     setError({
-//   //       ...error,
-//   //       email:"email is required"
-//   //     });
-//   //     hasError=true;
+// //   //   }
+// //   //   if(formData.email.trim()===""){
+// //   //     setError({
+// //   //       ...error,
+// //   //       email:"email is required"
+// //   //     });
+// //   //     hasError=true;
       
-//   //   }
-//   //   if(formData.password.trim()===""){
-//   //     setError({
-//   //       ...error,
-//   //       password:"password is required"
-//   //     });
-//   //     hasError=true;
+// //   //   }
+// //   //   if(formData.password.trim()===""){
+// //   //     setError({
+// //   //       ...error,
+// //   //       password:"password is required"
+// //   //     });
+// //   //     hasError=true;
       
-//   //   }
-//   //   if(hasError==true){
-//   //     return;
-//   //   }
-//     test();
+// //   //   }
+// //   //   if(hasError==true){
+// //   //     return;
+// //   //   }
+// //     test();
    
     
     
-//     console.log("form submitted")
+// //     console.log("form submitted")
 
     
     
    
-//   }
+// //   }
   
-//   return (
-//     <div>
+// //   return (
+// //     <div>
       
-//       <form onSubmit={handleSubmit}>
-//         <input
+// //       <form onSubmit={handleSubmit}>
+// //         <input
         
-//         name="name"
-//         value={formData.name}
-//         onChange={handleChange}
+// //         name="name"
+// //         value={formData.name}
+// //         onChange={handleChange}
         
-//        />
-//       <input
-//         name="email"
-//         value={formData.email}
-//         onChange={handleChange}
-//        />
-//       <input
-//         name="password"
-//         value={formData.password}
-//         onChange={handleChange}
-//        />
-//        {error.name && <p>{error.name}</p>}
-//        {error.email && <p>{error.email}</p>}
-//        {error.password && <p>{error.password}</p>}
-//        <button type="submit">
-//         Submit
-//        </button>
+// //        />
+// //       <input
+// //         name="email"
+// //         value={formData.email}
+// //         onChange={handleChange}
+// //        />
+// //       <input
+// //         name="password"
+// //         value={formData.password}
+// //         onChange={handleChange}
+// //        />
+// //        {error.name && <p>{error.name}</p>}
+// //        {error.email && <p>{error.email}</p>}
+// //        {error.password && <p>{error.password}</p>}
+// //        <button type="submit">
+// //         Submit
+// //        </button>
 
-//       </form>
-//        <h2>Hello, {formData.name}</h2>
-//        <h2>Hello, {formData.email}</h2>
-//        <h2>Hello, {formData.password}</h2>
+// //       </form>
+// //        <h2>Hello, {formData.name}</h2>
+// //        <h2>Hello, {formData.email}</h2>
+// //        <h2>Hello, {formData.password}</h2>
       
       
-//       <Counter count={count} setCount={setCount} />
-//       <Counter count={count} setCount={setCount} />
+// //       <Counter count={count} setCount={setCount} />
+// //       <Counter count={count} setCount={setCount} />
       
-//       <h1>React learning</h1>
-//       <p>Welcome to React!</p>
+// //       <h1>React learning</h1>
+// //       <p>Welcome to React!</p>
       
-//       <ProductCard name="macbookpro" price={10000}  />
-// <ProductCard name="victus" price={50000}  />
-// <ProductCard name="dell" price={30000}  />
+// //       <ProductCard name="macbookpro" price={10000}  />
+// // <ProductCard name="victus" price={50000}  />
+// // <ProductCard name="dell" price={30000}  />
+// //     </div>
+    
+// //   )
+// // }
+
+
+// function App(){
+//   // const [users,setUsers]=useState([]);
+//   // const [loading,setLoading]=useState(false);
+//   // const [errors,setError]=useState("");
+//   // async function getUsers() {
+//   //   // setLoading(true);
+//   //   // setError("");
+
+//   //   // const response=await fetch("https://jsonplaceholder.typicode.com/users");
+//   //   // if(!response.ok){
+//   //   //   setError("failed to fetch user");
+//   //   //   setLoading(false);
+//   //   //   return;
+//   //   // }
+//   //   // const data=await response.json();
+
+//   //   // setUsers(data);
+//   //   // console.log(data)
+//   //   // setLoading(false);
+//   //   setLoading(true);
+//   //   setError("");
+//   //    try {
+//   //       const response = await fetch(
+//   //           "https://jsonplaceholder.typicode.com/users"
+//   //       );
+
+//   //       if (!response.ok) {
+//   //           throw new Error("Failed to fetch users");
+//   //       }
+
+//   //       const data = await response.json();
+
+//   //       setUsers(data);
+
+//   //   } catch (error) {
+//   //       setError(error.message);
+
+//   //   } finally {
+//   //       setLoading(false);
+//   //   }
+    
+
+
+    
+//   // }
+//   // useEffect(() => {
+//   //       getUsers()
+//   //     },[])
+//   //const {data:user,loading,error}=useFetch( "https://jsonplaceholder.typicode.com/users/5" )
+//   const user1 = useFetch(
+//     "https://jsonplaceholder.typicode.com/users/1"
+// );
+
+// const user2 = useFetch(
+//     "https://jsonplaceholder.typicode.com/users/2"
+// );
+
+//   return(
+//     // <div>
+//     //   <User userId={5}/>
+//     // </div>
+
+//     <div>
+//        {user1.loading && <p>Loading...</p>}
+
+//         {user1.error && <p>{error}</p>}
+//        {user2.loading && <p>Loading...</p>}
+
+//         {user2.error && <p>{error}</p>}
+
+//         <h2>{user1.data?.name}</h2>
+//         <h2>{user2.data?.name}</h2>
+    
+
 //     </div>
     
+
+    
+
 //   )
+// } 
+//  export default App;
+
+// import React, { useEffect, useReducer } from "react";
+// import UserContext from "./context/UserContext";
+// import Profile from "./components/Profile";
+// const initialState={
+//   count:0
+// }
+// function reducer(s,action){
+//   if(action.type==="increment"){
+//     return{
+//       count:s.count+1
+//     }
+//   }
+//   if(action.type==="decrement"){
+//     return{
+//       count:s.count-1
+//     }
+//   }
+//   return s;
 // }
 
+// function App(){
 
-function App(){
-  // const [users,setUsers]=useState([]);
-  // const [loading,setLoading]=useState(false);
-  // const [errors,setError]=useState("");
-  // async function getUsers() {
-  //   // setLoading(true);
-  //   // setError("");
-
-  //   // const response=await fetch("https://jsonplaceholder.typicode.com/users");
-  //   // if(!response.ok){
-  //   //   setError("failed to fetch user");
-  //   //   setLoading(false);
-  //   //   return;
-  //   // }
-  //   // const data=await response.json();
-
-  //   // setUsers(data);
-  //   // console.log(data)
-  //   // setLoading(false);
-  //   setLoading(true);
-  //   setError("");
-  //    try {
-  //       const response = await fetch(
-  //           "https://jsonplaceholder.typicode.com/users"
-  //       );
-
-  //       if (!response.ok) {
-  //           throw new Error("Failed to fetch users");
-  //       }
-
-  //       const data = await response.json();
-
-  //       setUsers(data);
-
-  //   } catch (error) {
-  //       setError(error.message);
-
-  //   } finally {
-  //       setLoading(false);
-  //   }
-    
+//   const user={
+//     name:"Ishaan",
+//     age:20
 
 
-    
-  // }
-  // useEffect(() => {
-  //       getUsers()
-  //     },[])
-  //const {data:user,loading,error}=useFetch( "https://jsonplaceholder.typicode.com/users/5" )
-  const user1 = useFetch(
-    "https://jsonplaceholder.typicode.com/users/1"
-);
+//   }
+//   const [state,dispatch]=useReducer(
+//     reducer,initialState);
+//   return (
+//     // <div>
+//     //   {/* <UserContext.Provider value={user}>
+//     //     <Profile></Profile>
+        
 
-const user2 = useFetch(
-    "https://jsonplaceholder.typicode.com/users/2"
-);
+//     //   </UserContext.Provider> */}
+//     // </div>
+//     <div>
+//       <h1>{state.count}</h1>
+//       <button onClick={()=>dispatch({type:"increment"})}>Increase</button>
+//       <button onClick={()=>dispatch({type:"decrement"})}>decrease</button>
 
-  return(
-    // <div>
-    //   <User userId={5}/>
-    // </div>
+//     </div>
+//   )
+// }
+// export default App;
 
-    <div>
-       {user1.loading && <p>Loading...</p>}
+import { useReducer } from "react";
 
-        {user1.error && <p>{error}</p>}
-       {user2.loading && <p>Loading...</p>}
+const initialState = {
+    name: "",
+    email: "",
+    password: "",
+    errors: {
+        name: "",
+        email: "",
+        password: ""
+    }
+};
 
-        {user2.error && <p>{error}</p>}
+function reducer(state, action) {
 
-        <h2>{user1.data?.name}</h2>
-        <h2>{user2.data?.name}</h2>
-    
+    if (action.type === "CHANGE_FIELD") {
+        return {
+            ...state,
+            [action.field]: action.value,
 
-    </div>
-    
+            errors: {
+                ...state.errors,
+                [action.field]: ""
+            }
+        };
+    }
 
-    
+    if (action.type === "VALIDATE") {
 
-  )
-} 
- export default App;
+        const errors = {
+            name: "",
+            email: "",
+            password: ""
+        };
+
+        if (state.name.trim() === "") {
+            errors.name = "Name is required";
+        }
+
+        if (state.email.trim() === "") {
+            errors.email = "Email is required";
+        }
+
+        if (state.password.trim() === "") {
+            errors.password = "Password is required";
+        }
+
+        return {
+            ...state,
+            errors
+        };
+    }
+
+    return state;
+}
+
+function App() {
+
+    const [state, dispatch] = useReducer(
+        reducer,
+        initialState
+    );
+
+    function handleChange(event) {
+
+        const { name, value } = event.target;
+
+        dispatch({
+            type: "CHANGE_FIELD",
+            field: name,
+            value: value
+        });
+    }
+
+    function handleSubmit(event) {
+
+        event.preventDefault();
+
+        dispatch({
+            type: "VALIDATE"
+        });
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+
+            <input
+                name="name"
+                
+                onChange={handleChange}
+            />
+
+            {state.errors.name && (
+                <p>{state.errors.name}</p>
+            )}
+
+            <input
+                name="email"
+                
+                onChange={handleChange}
+            />
+
+            {state.errors.email && (
+                <p>{state.errors.email}</p>
+            )}
+
+            <input
+                name="password"
+                
+                onChange={handleChange}
+            />
+
+            {state.errors.password && (
+                <p>{state.errors.password}</p>
+            )}
+
+            <button type="submit">
+                Submit
+            </button>
+
+        </form>
+    );
+}
+
+export default App;
