@@ -275,6 +275,7 @@
 // export default App;
 
 import { useReducer } from "react";
+import Card from "./components/Card";
 
 const initialState = {
     name: "",
@@ -358,43 +359,71 @@ function App() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <div>
+            <form onSubmit={handleSubmit}>
 
-            <input
-                name="name"
+                <input
+                    name="name"
+                    
+                    onChange={handleChange}
+                />
+
+                {state.errors.name && (
+                    <p>{state.errors.name}</p>
+                )}
+
+                <input
+                    name="email"
+                    
+                    onChange={handleChange}
+                />
+
+                {state.errors.email && (
+                    <p>{state.errors.email}</p>
+                )}
+
+                <input
+                    name="password"
+                    
+                    onChange={handleChange}
+                />
+
+                {state.errors.password && (
+                    <p>{state.errors.password}</p>
+                )}
+
+                <button type="submit">
+                    Submit
+                </button>
+
+            </form>
+            <Card>
+                <h1>Ishaan Varshney</h1>
+                <h2>Age :20</h2>
                 
-                onChange={handleChange}
-            />
-
-            {state.errors.name && (
-                <p>{state.errors.name}</p>
-            )}
-
-            <input
-                name="email"
+            </Card>
+            <Card>
+                <h1>Ishaan Varshney</h1>
+                <h2>Age :20</h2>
                 
-                onChange={handleChange}
-            />
-
-            {state.errors.email && (
-                <p>{state.errors.email}</p>
-            )}
-
-            <input
-                name="password"
+            </Card>
+            <Card>
+                <h1>Ishaan Varshney</h1>
+                <h2>Age :20</h2>
                 
-                onChange={handleChange}
-            />
+            </Card>
+            <Card>
+                <h1>Ishaan Varshney</h1>
+                <h2>Age :20</h2>
+                
+            </Card>
+            <Card>
+                <h1>Ishaan Varshney</h1>
+                <h2>Age :20</h2>
+                
+            </Card>
+        </div>
 
-            {state.errors.password && (
-                <p>{state.errors.password}</p>
-            )}
-
-            <button type="submit">
-                Submit
-            </button>
-
-        </form>
     );
 }
 
