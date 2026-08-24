@@ -274,157 +274,189 @@
 // }
 // export default App;
 
-import { useReducer } from "react";
-import Card from "./components/Card";
+// import { useReducer } from "react";
+// import Card from "./components/Card";
 
-const initialState = {
-    name: "",
-    email: "",
-    password: "",
-    errors: {
-        name: "",
-        email: "",
-        password: ""
-    }
-};
+// const initialState = {
+//     name: "",
+//     email: "",
+//     password: "",
+//     errors: {
+//         name: "",
+//         email: "",
+//         password: ""
+//     }
+// };
 
-function reducer(state, action) {
+// function reducer(state, action) {
 
-    if (action.type === "CHANGE_FIELD") {
-        return {
-            ...state,
-            [action.field]: action.value,
+//     if (action.type === "CHANGE_FIELD") {
+//         return {
+//             ...state,
+//             [action.field]: action.value,
 
-            errors: {
-                ...state.errors,
-                [action.field]: ""
-            }
-        };
-    }
+//             errors: {
+//                 ...state.errors,
+//                 [action.field]: ""
+//             }
+//         };
+//     }
 
-    if (action.type === "VALIDATE") {
+//     if (action.type === "VALIDATE") {
 
-        const errors = {
-            name: "",
-            email: "",
-            password: ""
-        };
+//         const errors = {
+//             name: "",
+//             email: "",
+//             password: ""
+//         };
 
-        if (state.name.trim() === "") {
-            errors.name = "Name is required";
-        }
+//         if (state.name.trim() === "") {
+//             errors.name = "Name is required";
+//         }
 
-        if (state.email.trim() === "") {
-            errors.email = "Email is required";
-        }
+//         if (state.email.trim() === "") {
+//             errors.email = "Email is required";
+//         }
 
-        if (state.password.trim() === "") {
-            errors.password = "Password is required";
-        }
+//         if (state.password.trim() === "") {
+//             errors.password = "Password is required";
+//         }
 
-        return {
-            ...state,
-            errors
-        };
-    }
+//         return {
+//             ...state,
+//             errors
+//         };
+//     }
 
-    return state;
-}
+//     return state;
+// }
 
-function App() {
+// function App() {
 
-    const [state, dispatch] = useReducer(
-        reducer,
-        initialState
-    );
+//     const [state, dispatch] = useReducer(
+//         reducer,
+//         initialState
+//     );
 
-    function handleChange(event) {
+//     function handleChange(event) {
 
-        const { name, value } = event.target;
+//         const { name, value } = event.target;
 
-        dispatch({
-            type: "CHANGE_FIELD",
-            field: name,
-            value: value
-        });
-    }
+//         dispatch({
+//             type: "CHANGE_FIELD",
+//             field: name,
+//             value: value
+//         });
+//     }
 
-    function handleSubmit(event) {
+//     function handleSubmit(event) {
 
-        event.preventDefault();
+//         event.preventDefault();
 
-        dispatch({
-            type: "VALIDATE"
-        });
-    }
+//         dispatch({
+//             type: "VALIDATE"
+//         });
+//     }
 
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
+//     return (
+//         <div>
+//             <form onSubmit={handleSubmit}>
 
-                <input
-                    name="name"
+//                 <input
+//                     name="name"
                     
-                    onChange={handleChange}
-                />
+//                     onChange={handleChange}
+//                 />
 
-                {state.errors.name && (
-                    <p>{state.errors.name}</p>
-                )}
+//                 {state.errors.name && (
+//                     <p>{state.errors.name}</p>
+//                 )}
 
-                <input
-                    name="email"
+//                 <input
+//                     name="email"
                     
-                    onChange={handleChange}
-                />
+//                     onChange={handleChange}
+//                 />
 
-                {state.errors.email && (
-                    <p>{state.errors.email}</p>
-                )}
+//                 {state.errors.email && (
+//                     <p>{state.errors.email}</p>
+//                 )}
 
-                <input
-                    name="password"
+//                 <input
+//                     name="password"
                     
-                    onChange={handleChange}
+//                     onChange={handleChange}
+//                 />
+
+//                 {state.errors.password && (
+//                     <p>{state.errors.password}</p>
+//                 )}
+
+//                 <button type="submit">
+//                     Submit
+//                 </button>
+
+//             </form>
+//             <Card>
+//                 <h1>Ishaan Varshney</h1>
+//                 <h2>Age :20</h2>
+                
+//             </Card>
+//             <Card>
+//                 <h1>Ishaan Varshney</h1>
+//                 <h2>Age :20</h2>
+                
+//             </Card>
+//             <Card>
+//                 <h1>Ishaan Varshney</h1>
+//                 <h2>Age :20</h2>
+                
+//             </Card>
+//             <Card>
+//                 <h1>Ishaan Varshney</h1>
+//                 <h2>Age :20</h2>
+                
+//             </Card>
+//             <Card>
+//                 <h1>Ishaan Varshney</h1>
+//                 <h2>Age :20</h2>
+                
+//             </Card>
+//         </div>
+
+//     );
+// }
+
+// export default App;
+
+import { useState } from "react";
+import { BrowserRouter, Routes,Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import PrivateRoute from "./components/PrivateRoute";
+
+function App(){
+    const [isAuthenticated,setIsAuthneticated]=useState(true);
+    return(
+        <BrowserRouter >
+            <Routes>
+                <Route
+                    path="/login"
+                    element={<Login />} 
                 />
+                <Route element={< PrivateRoute isAuthenticated={isAuthenticated} />
+                }>
+                    <Route
+                        path="/dashboard"
+                        element={<Dashboard />} 
+                    />
 
-                {state.errors.password && (
-                    <p>{state.errors.password}</p>
-                )}
+                </Route>
+                
+            </Routes>
+        </BrowserRouter >
+    )
 
-                <button type="submit">
-                    Submit
-                </button>
-
-            </form>
-            <Card>
-                <h1>Ishaan Varshney</h1>
-                <h2>Age :20</h2>
-                
-            </Card>
-            <Card>
-                <h1>Ishaan Varshney</h1>
-                <h2>Age :20</h2>
-                
-            </Card>
-            <Card>
-                <h1>Ishaan Varshney</h1>
-                <h2>Age :20</h2>
-                
-            </Card>
-            <Card>
-                <h1>Ishaan Varshney</h1>
-                <h2>Age :20</h2>
-                
-            </Card>
-            <Card>
-                <h1>Ishaan Varshney</h1>
-                <h2>Age :20</h2>
-                
-            </Card>
-        </div>
-
-    );
 }
 
 export default App;
