@@ -434,6 +434,9 @@ import { BrowserRouter, Routes,Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
+
 
 function App(){
     const [isAuthenticated,setIsAuthneticated]=useState(true);
@@ -449,7 +452,13 @@ function App(){
                     <Route
                         path="/dashboard"
                         element={<Dashboard />} 
-                    />
+                    >
+                        <Route 
+                            path="profile"
+                            element={<Profile />}
+                        />
+                        <Route path="settings" element={Settings} />
+                    </Route>
 
                 </Route>
                 
