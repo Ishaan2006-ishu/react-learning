@@ -438,56 +438,56 @@ import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 
 
-// function App(){
-//     const [isAuthenticated,setIsAuthneticated]=useState(true);
-//     return(
-//         <BrowserRouter >
-//             <Routes>
-//                 <Route
-//                     path="/login"
-//                     element={<Login />} 
-//                 />
-//                 <Route element={< PrivateRoute isAuthenticated={isAuthenticated} />
-//                 }>
-//                     <Route
-//                         path="/dashboard"
-//                         element={<Dashboard />} 
-//                     >
-//                         <Route 
-//                             path="profile"
-//                             element={<Profile />}
-//                         />
-//                         <Route path="settings" element={Settings} />
-//                     </Route>
-
-//                 </Route>
-                
-//             </Routes>
-//         </BrowserRouter >
-//     )
-
-// }
-
-// export default App;
-
 function App(){
-    const [count,setCount]=useState(0);
-    // function handleClick(){
-    //     console.log("user clicked");
-    // }
-    const handleClick=useCallback(()=>{
-        console.log("user clicked")
-
-    },[])
+    const [isAuthenticated,setIsAuthneticated]=useState(true);
     return(
-        <div>
-            <button onClick={()=>setCount(count+1)}>
-                count: {count}
-            </button>
-            < Login name="ishu" handleClick={handleClick} />
+        <BrowserRouter >
+            <Routes>
+                <Route
+                    path="/login"
+                    element={<Login />} 
+                />
+                <Route element={< PrivateRoute isAuthenticated={isAuthenticated} />
+                }>
+                    <Route
+                        path="/dashboard"
+                        element={<Dashboard />} 
+                    >
+                        <Route 
+                            path="profile"
+                            element={<Profile />}
+                        />
+                        <Route path="settings" element={Settings} />
+                    </Route>
 
-        </div>
-
+                </Route>
+                
+            </Routes>
+        </BrowserRouter >
     )
+
 }
+
 export default App;
+
+// function App(){
+//     const [count,setCount]=useState(0);
+//     // function handleClick(){
+//     //     console.log("user clicked");
+//     // }
+//     const handleClick=useCallback(()=>{
+//         console.log("user clicked")
+
+//     },[])
+//     return(
+//         <div>
+//             <button onClick={()=>setCount(count+1)}>
+//                 count: {count}
+//             </button>
+//             < Login name="ishu" handleClick={handleClick} />
+
+//         </div>
+
+//     )
+// }
+// export default App;
