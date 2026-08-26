@@ -457,6 +457,10 @@ function App(){
                             path="profile"
                             element={<Profile />}
                         />
+                        <Route 
+                            path="card"
+                            element={<Card />}
+                        />
                         <Route path="settings" element={Settings} />
                     </Route>
 
