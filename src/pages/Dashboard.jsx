@@ -14,6 +14,18 @@ function Dashboard() {
             <Link to="/dashboard/settings">
                 Settings
             </Link>
+            <Link to="/dashboard/settings">
+                Settings
+            </Link>
+            <Link to="/dashboard/settings">
+                update
+            </Link>
+            <Link to="/dashboard/settings">
+                Remove
+            </Link>
+            <Link to="/dashboard/settings">
+                Add
+            </Link>
 
             <Outlet />
         </div>
