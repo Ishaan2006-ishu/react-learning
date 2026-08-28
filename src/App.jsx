@@ -461,6 +461,31 @@ function App(){
                             path="card"
                             element={<Card />}
                         />
+                        <Route 
+                            path="card"
+                            element={<Card />}
+                        />
+                        <Route 
+                            path="card"
+                            element={<Card />}
+                        />
+                        <Route 
+                            path="card"
+                            element={<Card />}
+                        />
+                        <Route 
+                            path="card"
+                            element={<Card />}
+                        />
+                        <Route 
+                            path="card"
+                            element={<Card />}
+                        />
+                        <Route path="settings" element={Settings} />
+                        <Route path="settings" element={Settings} />
+                        <Route path="settings" element={Settings} />
+                        <Route path="settings" element={Settings} />
+                        <Route path="settings" element={Settings} />
                         <Route path="settings" element={Settings} />
                     </Route>
 
