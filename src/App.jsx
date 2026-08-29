@@ -482,11 +482,7 @@ function App(){
                             element={<Card />}
                         />
                         <Route path="settings" element={Settings} />
-                        <Route path="settings" element={Settings} />
-                        <Route path="settings" element={Settings} />
-                        <Route path="settings" element={Settings} />
-                        <Route path="settings" element={Settings} />
-                        <Route path="settings" element={Settings} />
+                        
                     </Route>
 
                 </Route>
