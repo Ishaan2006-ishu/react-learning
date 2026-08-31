@@ -461,10 +461,6 @@ function App(){
                             path="card"
                             element={<Card />}
                         />
-                        {/* <Route 
-                            path="card"
-                            element={<Card />}
-                        />
                         <Route 
                             path="card"
                             element={<Card />}
@@ -476,7 +472,11 @@ function App(){
                         <Route 
                             path="card"
                             element={<Card />}
-                        /> */}
+                        />
+                        <Route 
+                            path="card"
+                            element={<Card />}
+                        />
                         <Route 
                             path="card"
                             element={<Card />}
